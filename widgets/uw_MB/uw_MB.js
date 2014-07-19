@@ -88,7 +88,4 @@ function uw_MB(userid, htmlId) {
         });
     }
   };
-
-  model.loadGenreData();
-  model.loadMoviesData(12, 0);
 }
