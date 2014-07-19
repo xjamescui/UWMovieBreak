@@ -1,87 +1,86 @@
-
-
-
-
 <!DOCTYPE html>
 
 <html lang="en">
     <head>
     		<meta charset="utf-8"/>
         <title>CS349 Portal</title>
-		
+
         <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-        
-        
+
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" media="screen" href="css/bootstrap.css">
         <link rel="stylesheet" media="screen" href="css/bootstrap-theme.css">
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        
+
         <script src="js/mustache.js" type="text/javascript"></script>
         <script src="js/portal.js" type="text/javascript"></script>
-        
-        
+
+
         <link rel="stylesheet" media="screen" href="css/main.css">
         <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+
+        <!-- Include font awesome for icons -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
     </head>
     <body><div class="container-fluid">
-        
+
   <div class="row">
   	<h1>CS349 Portal</h1>
   	<div class="pull-left">Byron Weber Becker</div>  <div class="pull-right"><a href="/admin">Admin</a></div>
   </div>
-    
-  
 
-	 
+
+
+
 	   <div class="row">
 		    	<div class="col-md-4 cell" id="uw_MB_background">
-		        <link rel="stylesheet" 
-		        			media="screen" 
-		        			href="widgets/uw_MB/SAMPLE.css">
-		    		<script src="widgets/uw_MB/SAMPLE.js" 
+		        <link rel="stylesheet"
+		        			media="screen"
+		        			href="widgets/uw_MB/uw_MB.css">
+		    		<script src="widgets/uw_MB/uw_MB.js"
 		    					type="text/javascript"></script>
 		    	  <div id="uw_MB"></div>
 		    	</div>
-	   	 
-	   
-	   	 
+
+
+
 		    	<div class="col-md-4 cell" id="courseDescr_background">
-		        <link rel="stylesheet" 
-		        			media="screen" 
+		        <link rel="stylesheet"
+		        			media="screen"
 		        			href="widgets/courseDescr/courseDescr.css">
-		    		<script src="widgets/courseDescr/courseDescr.js" 
+		    		<script src="widgets/courseDescr/courseDescr.js"
 		    					type="text/javascript"></script>
 		    	  <div id="courseDescr"></div>
 		    	</div>
-	   	 
+
 		    	<div class="col-md-4 cell" id="stdCrsHist_background">
-		        <link rel="stylesheet" 
-		        			media="screen" 
+		        <link rel="stylesheet"
+		        			media="screen"
 		        			href="widgets/stdCrsHist/stdCrsHist.css">
-		    		<script src="widgets/stdCrsHist/stdCrsHist.js" 
+		    		<script src="widgets/stdCrsHist/stdCrsHist.js"
 		    					type="text/javascript"></script>
 		    	  <div id="stdCrsHist"></div>
 		    	</div>
-	   	 
-    	    	
+
+
     </div>
-    
+
     <script>
     var server = "localhost"
     $(document).ready(function() {
-    	
+
     		courseDescr("rtakeuch", "#courseDescr")
-    	
+
     		stdCrsHist("rtakeuch", "#stdCrsHist")
 
-    		uw_MB("rtakeuch", "#SAMPLE")
-    	
+    		uw_MB("rtakeuch", "#uw_MB")
+
     });
     </script>
-  
+
 
 
     </div></body>
 </html>
-
