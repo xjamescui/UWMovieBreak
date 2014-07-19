@@ -1,4 +1,6 @@
 function uw_MB(userid, htmlId) {
+  "use strict";
+  var templates = {};
 
   var model = {
     views: [],
@@ -36,9 +38,9 @@ function uw_MB(userid, htmlId) {
           console.log("error trying to get genres");
         })
         .done(function(data) {
-          that.course = data.genres;
-          console.log(that.course);
-          //updateView?
+          that.genres = data.genres;
+          //update View
+          that.updateViews("search");
         });
     },
 
@@ -53,7 +55,7 @@ function uw_MB(userid, htmlId) {
       var params = {
         'api_key': that.api_key,
         'vote_count.gte': 1000,
-        'vote_average.gte' min_score,
+        'vote_average.gte': min_score,
         'with_genres': genre_id,
         'language': 'en',
         'sort_by': 'vote_average.desc',
@@ -88,4 +90,53 @@ function uw_MB(userid, htmlId) {
         });
     }
   };
+
+  // View for search
+  var searchView = {
+    // Update our view
+    updateView: function(msg){
+      var t = "";
+      if (msg === "error") {
+        t = templates.error;
+      } else if (msg === "search"){
+        var t = Mustache.render(templates.search, model);
+        $("#uw_MB_content").html(t);
+      }
+    },
+
+    initView: function () {
+      console.log("Initializing uw_MB_searchView");
+
+      /*
+       *  We want to initialize our search view here to begin with.
+       */
+      var t = Mustache.render(templates.search, model.genres);
+      $("#uw_MB_content").html(t);
+
+      /*
+       * Now we want to set the controller for the search button
+       * Get the input fields for searching and tell the model
+       * to get the corresponding movie results.
+       */
+      $("#uw_MB_searchButton").click(function (){
+        // Gather our variables
+        var genre = $("#uw_MB_genre").val();
+        var releaseDate = $("#uw_MB_releaseDate").val();
+        console.log("Genre: " + genre + " Release: " + releaseDate);
+      });
+    }
+  };
+
+  // Initialize our widget
+  console.log("Initializing uw_MB(" + userid + ", " + htmlId + ")");
+  portal.loadTemplates("widgets/uw_MB/templates.json",
+      function (t) {
+        templates = t;
+        $(htmlId).html(templates.baseHtml);
+
+        searchView.initView();
+
+        model.addView(searchView.updateView);
+        model.loadGenreData();
+      });
 }

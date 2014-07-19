@@ -1,0 +1,26 @@
+{
+	"baseHtml":[
+		"<h4 id='uw_MB_header'><i class='fa fa-youtube-play fa-lg'></i>  UW Movie break</h4>",
+		"<div id='uw_MB_content'></div>"
+	],
+
+	"search": [
+		"<div id='uw_MB_search'>Find a movie </br>",
+			"<label>Genre:",
+				"<select id='uw_MB_genre'>",
+				"{{#genres}}",
+					"<option value={{id}}>{{name}}</option>",
+				"{{/genres}}",
+				"</select>",
+			"</label>",
+			"<label>Release Date:",
+				"<input id='uw_MB_releaseDate' type='date' name='releaseDate' value='2014-01-01'>",
+			"</label>",
+			"<button id='uw_MB_searchButton'>Search</button>",
+		"</div>"
+	],
+
+	"results": [],
+
+	"details": []
+}
