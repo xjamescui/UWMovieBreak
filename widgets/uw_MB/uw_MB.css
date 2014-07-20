@@ -1,0 +1,53 @@
+h4 {
+  color: black; }
+
+div#break {
+  height: 3px;
+  background-color: black; }
+
+.noPadding {
+  padding-left: 0;
+  padding-right: 0; }
+
+.noPaddingLeft {
+  padding-left: 0; }
+
+.paddingLeft {
+  padding-left: 10px; }
+
+.paddingTopBottom {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.alignCenter {
+  text-align: center; }
+
+.textRight {
+  text-align: right; }
+
+.mainTitle {
+  color: black;
+  font-family: "Bubblegum Sans"; }
+
+.viewTitle {
+  color: black;
+  font-family: "Lato";
+  font-size: 20px;
+  text-shadow: 2px 2px 2px #aaaaaa; }
+
+.lato {
+  font-family: "Lato"; }
+
+.labelTitle {
+  font-family: "Lato";
+  font-style: bold;
+  font-size: 17px; }
+
+.redText {
+  color: #d00000; }
+
+.whiteText {
+  color: white; }
+
+.redFill {
+  background-color: #d00000; }
