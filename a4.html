@@ -5,7 +5,8 @@
     		<meta charset="utf-8"/>
         <title>CS349 Portal</title>
 
-        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,12 @@
         <!-- Include font awesome for icons -->
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
+        <!-- Datepicker Styling-->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+        <!-- Google Fonts -->
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Coming+Soon|Bubblegum+Sans|Dosis|Lato">
+
     </head>
     <body><div class="container-fluid">
 
@@ -31,17 +38,14 @@
   	<div class="pull-left">Byron Weber Becker</div>  <div class="pull-right"><a href="/admin">Admin</a></div>
   </div>
 
-
-
-
 	   <div class="row">
 		    	<div class="col-md-4 cell" id="uw_MB_background">
 		        <link rel="stylesheet"
 		        			media="screen"
-		        			href="widgets/uw_MB/uw_MB.css">
+		        			href="widgets/uw_MB/sass/uw_MB.css">
 		    		<script src="widgets/uw_MB/uw_MB.js"
 		    					type="text/javascript"></script>
-		    	  <div id="uw_MB"></div>
+		    	  <div id="uw_MB" class='container-fluid'></div>
 		    	</div>
 
 
