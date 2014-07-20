@@ -39,7 +39,6 @@ function uw_MB(userid, htmlId) {
         })
         .done(function(data) {
           that.genres = data.genres;
-          //update View
           that.updateViews("search");
         });
     },
@@ -70,7 +69,7 @@ function uw_MB(userid, htmlId) {
         })
         .done(function(data) {
           that.movies = data.results;
-          console.log('array size: ' + that.movies.length);
+          that.updateViews("results");
         });
     },
 
@@ -93,37 +92,64 @@ function uw_MB(userid, htmlId) {
 
   // View for search
   var searchView = {
+
+    registerController: function(){
+      $("#uw_MB_searchButton").click(function(){
+        // Gather our variables
+        var genre = $("#uw_MB_genre").val();
+        var releaseDate = $("#uw_MB_releaseDate").val();
+        console.log("Genre: " + genre + " Release: " + releaseDate);
+
+        //get results
+        model.loadMoviesData();
+      });
+    },
     // Update our view
     updateView: function(msg){
       var t = "";
       if (msg === "error") {
         t = templates.error;
       } else if (msg === "search"){
-        var t = Mustache.render(templates.search, model);
-        $("#uw_MB_content").html(t);
+        t = Mustache.render(templates.search, model);
+      }
+
+      $("#uw_MB_search").html(t);
+
+      if (msg === "search"){
+        searchView.registerController();
       }
     },
 
-    initView: function () {
-      console.log("Initializing uw_MB_searchView");
+    initView: function() {
+      console.log("Initializing uw_MB: searchView");
+      model.addView(searchView.updateView);
+    }
+  };
 
-      /*
-       *  We want to initialize our search view here to begin with.
-       */
-      var t = Mustache.render(templates.search, model.genres);
-      $("#uw_MB_content").html(t);
+  var resultsView = {
+    updateView: function(msg){
+      var t = "";
+      if (msg === "error") {
+        t = templates.error;
+      } else if (msg === "results"){
+        t = Mustache.render(templates.results, model);
+      }
+      $("#uw_MB_results").html(t);
+    },
 
-      /*
-       * Now we want to set the controller for the search button
-       * Get the input fields for searching and tell the model
-       * to get the corresponding movie results.
-       */
-      $("#uw_MB_searchButton").click(function (){
-        // Gather our variables
-        var genre = $("#uw_MB_genre").val();
-        var releaseDate = $("#uw_MB_releaseDate").val();
-        console.log("Genre: " + genre + " Release: " + releaseDate);
-      });
+    initView: function(){
+      console.log("Initialziating uw_MB: resultsView");
+      model.addView(resultsView.updateView);
+    }
+  };
+
+  var detailsView = {
+    updateView: function(msg) {
+
+    },
+
+    initView: function(){
+      model.addView(detailsView.updateView);
     }
   };
 
@@ -135,8 +161,8 @@ function uw_MB(userid, htmlId) {
         $(htmlId).html(templates.baseHtml);
 
         searchView.initView();
+        resultsView.initView();
 
-        model.addView(searchView.updateView);
         model.loadGenreData();
       });
 }
