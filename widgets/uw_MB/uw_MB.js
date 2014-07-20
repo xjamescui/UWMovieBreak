@@ -103,6 +103,11 @@ function uw_MB(userid, htmlId) {
         //get results
         model.loadMoviesData();
       });
+
+      // Attach the datepicker
+      $(function() {
+        $( "#datepicker" ).datepicker();
+      });
     },
     // Update our view
     updateView: function(msg){
