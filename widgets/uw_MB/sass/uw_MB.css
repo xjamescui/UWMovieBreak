@@ -1,0 +1,34 @@
+h4 {
+  color: black; }
+
+div#break {
+  height: 3px;
+  background-color: black; }
+
+.noPaddingLeft {
+  padding-left: 0; }
+
+.paddingLeft {
+  padding-left: 10px; }
+
+.paddingTopBottom {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.alignCenter {
+  text-align: center; }
+
+.textRight {
+  text-align: right; }
+
+.viewTitle {
+  color: black; }
+
+.redText {
+  color: #d00000; }
+
+.whiteText {
+  color: white; }
+
+.redFill {
+  background-color: #d00000; }

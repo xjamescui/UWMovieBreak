@@ -1,25 +1,38 @@
 {
 	"baseHtml":[
-		"<h4 id='uw_MB_header'><i class='fa fa-youtube-play fa-lg'></i>  UW Movie break</h4>",
-		"<div id='uw_MB_content'>",
-			"<div id='uw_MB_search'></div>",
-			"<div id='uw_MB_results'></div>",
-		"</div>"
+			"<div class='row'>",
+				"<h4 id='uw_MB_header'><i class='fa fa-play-circle fa-lg'></i>  UW Movie Break</h4>",
+				"<div id='break'></div>",
+			"</div>",
+			"<div id='uw_MB_search' class='row'></div>",
+			"<div id='uw_MB_results' class='row'></div>"
 	],
 
 	"search": [
-		"Find a movie<br>",
-			"<label>Genre:",
+		"<div class='container-fluid'>",
+			"<div class='row'>",
+				"<h4 class='viewTitle'>Find a movie</h4>",
+			"</div>",
+			"<div class='row redFill whiteText'>",
+				"<span class='paddingLeft'>Genre</span>",
+			"</div>",
+			"<div class='row paddingTopBottom paddingLeft'>",
 				"<select id='uw_MB_genre'>",
-				"{{#genres}}",
-					"<option value={{id}}>{{name}}</option>",
-				"{{/genres}}",
+					"{{#genres}}",
+						"<option value={{id}}>{{name}}</option>",
+					"{{/genres}}",
 				"</select>",
-			"</label>",
-			"<label>Release Date:",
-				"<input id='uw_MB_releaseDate' type='date' name='releaseDate' value='2014-01-01'>",
-			"</label>",
-			"<button id='uw_MB_searchButton'>Search</button>"
+			"</div>",
+			"<div class='row redFill whiteText'>",
+				"<span class='paddingLeft'>Release Date</span>",
+			"</div>",
+			"<div class='row paddingTopBottom paddingLeft'>",
+				"<input type='text' id='datepicker' name='releaseDate' value='Click to select'>",
+			"</div>",
+			"<div class='row paddingTopBottom alignCenter'>",
+				"<button id='uw_MB_searchButton'>Search</button>",
+			"</div>",
+		"</div>"
 	],
 
 	"results": [
