@@ -66,7 +66,7 @@ function uw_MB(userid, htmlId) {
         'sort_by': 'vote_average.desc',
         'release_date.gte': release_date_min //YYYY-MM-DD
       }
-      var url = "http://private-af6af-themoviedb.apiary-proxy.com/3/discover/movie?" + $.param(params);
+      var url = "https://api.themoviedb.org/3/discover/movie?" + $.param(params);
       console.log('url: ' + url);
 
       $.getJSON(url, function() {})
