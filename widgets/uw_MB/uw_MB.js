@@ -8,6 +8,10 @@ function uw_MB(userid, htmlId) {
     movie: {},
     genres: [],
     api_key: 'd0efc3a192023191b83b6e59746f3399',
+    // Gather our variables
+    genre_id: "",
+    min_release_date: "",
+    min_score: 5,
 
     /**
      *  Add a new view to be notified when the model changes.
@@ -114,17 +118,16 @@ function uw_MB(userid, htmlId) {
     registerController: function(){
       $("#uw_MB_searchButton").click(function(){
         // Gather our variables
-        var genre_id = $("#uw_MB_genre").val();
-        var min_release_date = $("#uw_MB_releaseDate").val();
-        var min_score = 5
+        model.genre_id = $("#uw_MB_genre").val();
+        model.min_release_date = $("#uw_MB_releaseDate #datepicker").val();
 
         //get results
-        model.loadMoviesData(genre_id, min_score, min_release_date);
+        model.loadMoviesData(model.genre_id, model.min_score, model.min_release_date);
       });
 
       // Attach the datepicker
       $(function() {
-        $( "#datepicker" ).datepicker({
+        $( "#uw_MB_search #datepicker" ).datepicker({
           dateFormat: 'yy-mm-dd'
         });
       });
@@ -161,6 +164,10 @@ function uw_MB(userid, htmlId) {
           model.loadMovieDetailData(movie_id);
         });
       });
+
+      $("#uw_MB_backToSearch").click(function(){
+          model.loadGenreData();
+      });
     },
 
     updateView: function(msg){
@@ -184,6 +191,13 @@ function uw_MB(userid, htmlId) {
   };
 
   var detailsView = {
+    registerController: function(){
+      $("#uw_MB_backToResults").click(function(){
+          //get results again
+          model.loadMoviesData(model.genre_id, model.min_score, model.min_release_date);
+      });
+    },
+
     updateView: function(msg) {
       var t = "";
       if (msg === "error") {
@@ -192,6 +206,10 @@ function uw_MB(userid, htmlId) {
         t = Mustache.render(templates.details, model.movie);
       }
       $("#uw_MB_details").html(t);
+
+      if (msg === "details"){
+        detailsView.registerController();
+      }
     },
 
     initView: function(){
