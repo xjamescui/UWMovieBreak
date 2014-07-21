@@ -91,11 +91,14 @@ function uw_MB(userid, htmlId) {
      */
     loadMovieDetailData: function(movie_id) {
       var that = this;
-      var url = "https://api.themoviedb.org/3/movie/"+movie_id+"?api_key=d0efc3a192023191b83b6e59746f3399"
+      var params = {
+        'api_key': that.api_key
+      }
+      var url = "https://api.themoviedb.org/3/movie/"+movie_id+'?'+ $.param(params);
       $.getJSON(url,
         function() {})
         .fail(function() {
-          console.log("error trying to fetch movie detail for movie_id: " + movie + id)
+          console.log("error trying to fetch movie detail for movie_id: " + movie_id)
         })
         .done(function(data) {
           that.movie = data;
