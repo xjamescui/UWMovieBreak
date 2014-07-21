@@ -5,7 +5,8 @@
 				"<div id='break'></div>",
 			"</div>",
 			"<div id='uw_MB_search' class='row'></div>",
-			"<div id='uw_MB_results' class='row'></div>"
+			"<div id='uw_MB_results' class='row'></div>",
+			"<div id='uw_MB_details' class='row'></div>"
 	],
 
 	"search": [
@@ -47,12 +48,18 @@
 
 	"results": [
 		"<div class='uw_MB_content_title'>Results</div>",
-			"{{#movies}}",
-				"<div class='uw_MB_result_item'>",
-					"{{title}}",
-				"</div>",
-			"{{/movies}}"
+			"<ul>",
+				"{{#movies}}",
+					"<li class='uw_MB_result_item' value='{{id}}'>",
+						"<a>{{title}}</a>",
+					"</li>",
+				"{{/movies}}",
+			"</ul>"
 	],
 
-	"details": []
+	"details": [
+		"<div class='uw_MB_content_title'>{{original_title}}</div>",
+			"<p> Release: {{release_date}} </p>",
+			"<p> Runtime: {{runtime}} min. </p>"
+	]
 }
