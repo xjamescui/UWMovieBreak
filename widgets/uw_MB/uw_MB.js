@@ -115,8 +115,8 @@ function uw_MB(userid, htmlId) {
       $("#uw_MB_searchButton").click(function(){
         // Gather our variables
         var genre_id = $("#uw_MB_genre").val();
-        var min_release_date = $("#uw_MB_releaseDate").val();
-        var min_score = 5
+        var min_release_date = $("#uw_MB_releaseDate #datepicker").val();
+        var min_score = 5;
 
         //get results
         model.loadMoviesData(genre_id, min_score, min_release_date);
@@ -124,7 +124,9 @@ function uw_MB(userid, htmlId) {
 
       // Attach the datepicker
       $(function() {
-        $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+        $( "#uw_MB_search #datepicker" ).datepicker({
+          dateFormat: 'yy-mm-dd'
+        });
       });
     },
     // Update our view
@@ -154,10 +156,14 @@ function uw_MB(userid, htmlId) {
     registerController: function(){
       $(".uw_MB_result_item").each(function(){
           $(this).click(function(){
-          console.log("item clicked: value is "+ $(this).val());
-          var movie_id = $(this).val();
+          console.log("item clicked: value is "+ $(this).data('value'));
+          var movie_id = $(this).data('value');
           model.loadMovieDetailData(movie_id);
         });
+      });
+
+      $("#uw_MB_backToSearch").click(function(){
+          model.updateViews("search");
       });
     },
 
@@ -182,6 +188,13 @@ function uw_MB(userid, htmlId) {
   };
 
   var detailsView = {
+    registerController: function(){
+      $("#uw_MB_backToResults").click(function(){
+          //get results again
+          model.updateViews("results");
+      });
+    },
+
     updateView: function(msg) {
       var t = "";
       if (msg === "error") {
@@ -190,6 +203,10 @@ function uw_MB(userid, htmlId) {
         t = Mustache.render(templates.details, model.movie);
       }
       $("#uw_MB_details").html(t);
+
+      if (msg === "details"){
+        detailsView.registerController();
+      }
     },
 
     initView: function(){
