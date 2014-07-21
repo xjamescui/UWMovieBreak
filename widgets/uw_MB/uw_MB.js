@@ -106,7 +106,9 @@ function uw_MB(userid, htmlId) {
 
       // Attach the datepicker
       $(function() {
-        $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker({
+          dateFormat: 'mm-dd-yy'
+        });
       });
     },
     // Update our view

@@ -40,18 +40,29 @@
 				"<div class='col-xs-2 col-md-2 noPadding'>",
 					"<img src=images/popcorn.jpg class='img-responsive paddingLeft'>",
 				"</div>",
-
 			"</div>",
 		"</div>"
 	],
 
 	"results": [
-		"<div class='uw_MB_content_title'>Results</div>",
-			"{{#movies}}",
-				"<div class='uw_MB_result_item'>",
-					"{{title}}",
-				"</div>",
-			"{{/movies}}"
+		"<div class='container-fluid'>",
+			"<div class='row paddingTopBottom'>",
+				"<span class='viewTitle'>Results</span>",
+			"</div>",
+				"{{#movies}}",
+					"<div class='row movieTitle'>",
+						"{{title}}",
+					"</div>",
+					"<div class='row lato paddingBottom'>",
+						"<div class='col-xs-4 col-md-4 noPadding'>",
+							"<img src='http://image.tmdb.org/t/p/w500/{{poster_path}}' class='img-responsive'>",
+						"</div>",
+						"<div class='col-xs-8 col-md-8 noPadding'>",
+
+						"</div>",
+					"</div>",
+				"{{/movies}}",
+		"</div>"
 	],
 
 	"details": []
