@@ -8,10 +8,6 @@ function uw_MB(userid, htmlId) {
     movie: {},
     genres: [],
     api_key: 'd0efc3a192023191b83b6e59746f3399',
-    // Gather our variables
-    genre_id: "",
-    min_release_date: "",
-    min_score: 5,
 
     /**
      *  Add a new view to be notified when the model changes.
@@ -118,11 +114,12 @@ function uw_MB(userid, htmlId) {
     registerController: function(){
       $("#uw_MB_searchButton").click(function(){
         // Gather our variables
-        model.genre_id = $("#uw_MB_genre").val();
-        model.min_release_date = $("#uw_MB_releaseDate #datepicker").val();
+        var genre_id = $("#uw_MB_genre").val();
+        var min_release_date = $("#uw_MB_releaseDate #datepicker").val();
+        var min_score = 5;
 
         //get results
-        model.loadMoviesData(model.genre_id, model.min_score, model.min_release_date);
+        model.loadMoviesData(genre_id, min_score, min_release_date);
       });
 
       // Attach the datepicker
@@ -166,7 +163,7 @@ function uw_MB(userid, htmlId) {
       });
 
       $("#uw_MB_backToSearch").click(function(){
-          model.loadGenreData();
+          model.updateViews("search");
       });
     },
 
@@ -194,7 +191,7 @@ function uw_MB(userid, htmlId) {
     registerController: function(){
       $("#uw_MB_backToResults").click(function(){
           //get results again
-          model.loadMoviesData(model.genre_id, model.min_score, model.min_release_date);
+          model.updateViews("results");
       });
     },
 
