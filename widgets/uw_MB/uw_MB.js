@@ -5,6 +5,7 @@ function uw_MB(userid, htmlId) {
   var model = {
     views: [],
     movies: {},
+    movie: {},
     genres: [],
     api_key: 'd0efc3a192023191b83b6e59746f3399',
 
@@ -43,10 +44,15 @@ function uw_MB(userid, htmlId) {
         });
     },
 
-    /**
-     *  movies data format: array of objects with fields: title:string, vote_average:number, vote_count:int, release_date:date, poster_path:string
-     *
-     */
+    /*
+       movies data format: array of objects with fields:
+       id: int,
+       title:string,
+       vote_average:number,
+       vote_count:int,
+       release_date:date,
+       poster_path:string
+    */
     loadMoviesData: function(genre_id, min_score, release_date_min) {
       var that = this;
 
@@ -60,7 +66,7 @@ function uw_MB(userid, htmlId) {
         'sort_by': 'vote_average.desc',
         'release_date.gte': release_date_min //YYYY-MM-DD
       }
-      var url = "http://private-af6af-themoviedb.apiary-proxy.com/3/discover/movie?" + $.param(params);
+      var url = "https://api.themoviedb.org/3/discover/movie?" + $.param(params);
       console.log('url: ' + url);
 
       $.getJSON(url, function() {})
@@ -73,19 +79,31 @@ function uw_MB(userid, htmlId) {
         });
     },
 
-    /**
-     *   movie detail data format:
-     *  //TODO
+    /*
+       movie detail data format:
+       runtime: int,
+       release_date: date
+       tagline: string
+       vote_average: number
+       vote_count: int
+       original_title: string
+
      */
     loadMovieDetailData: function(movie_id) {
       var that = this;
-      $.getJSON("",
+      var params = {
+        'api_key': that.api_key
+      }
+      var url = "https://api.themoviedb.org/3/movie/"+movie_id+'?'+ $.param(params);
+      $.getJSON(url,
         function() {})
         .fail(function() {
-          console.log("error trying to fetch movie detail for movie_id: " + movie + id)
+          console.log("error trying to fetch movie detail for movie_id: " + movie_id)
         })
         .done(function(data) {
-
+          that.movie = data;
+          console.log(that.movie);
+          that.updateViews("details")
         });
     }
   };
@@ -96,18 +114,18 @@ function uw_MB(userid, htmlId) {
     registerController: function(){
       $("#uw_MB_searchButton").click(function(){
         // Gather our variables
-        var genre = $("#uw_MB_genre").val();
-        var releaseDate = $("#uw_MB_releaseDate").val();
-        console.log("Genre: " + genre + " Release: " + releaseDate);
+        var genre_id = $("#uw_MB_genre").val();
+        var min_release_date = $("#uw_MB_releaseDate").val();
+        var min_score = 5
 
         //get results
-        model.loadMoviesData();
+        model.loadMoviesData(genre_id, min_score, min_release_date);
       });
 
       // Attach the datepicker
       $(function() {
         $( "#datepicker" ).datepicker({
-          dateFormat: 'mm-dd-yy'
+          dateFormat: 'yy-mm-dd'
         });
       });
     },
@@ -134,6 +152,17 @@ function uw_MB(userid, htmlId) {
   };
 
   var resultsView = {
+
+    registerController: function(){
+      $(".uw_MB_result_item").each(function(){
+          $(this).click(function(){
+          console.log("item clicked: value is "+ $(this).data('value'));
+          var movie_id = $(this).data('value');
+          model.loadMovieDetailData(movie_id);
+        });
+      });
+    },
+
     updateView: function(msg){
       var t = "";
       if (msg === "error") {
@@ -142,6 +171,10 @@ function uw_MB(userid, htmlId) {
         t = Mustache.render(templates.results, model);
       }
       $("#uw_MB_results").html(t);
+
+      if (msg === "results"){
+        resultsView.registerController();
+      }
     },
 
     initView: function(){
@@ -152,7 +185,13 @@ function uw_MB(userid, htmlId) {
 
   var detailsView = {
     updateView: function(msg) {
-
+      var t = "";
+      if (msg === "error") {
+        t = templates.error;
+      } else if (msg === "details"){
+        t = Mustache.render(templates.details, model.movie);
+      }
+      $("#uw_MB_details").html(t);
     },
 
     initView: function(){
@@ -169,6 +208,7 @@ function uw_MB(userid, htmlId) {
 
         searchView.initView();
         resultsView.initView();
+        detailsView.initView();
 
         model.loadGenreData();
       });
