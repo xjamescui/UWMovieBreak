@@ -202,7 +202,7 @@ function uw_MB(userid, htmlId) {
       if (msg === "error") {
         t = templates.error;
       } else if (msg === "details"){
-        t = Mustache.render(templates.details, model.movie, model.movie_trailer);
+        t = Mustache.render(templates.details, model.movie);
       }
       $("#uw_MB_details").html(t);
 
