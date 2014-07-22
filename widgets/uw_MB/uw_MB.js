@@ -92,7 +92,8 @@ function uw_MB(userid, htmlId) {
     loadMovieDetailData: function(movie_id) {
       var that = this;
       var params = {
-        'api_key': that.api_key
+        'api_key': that.api_key,
+        'append_to_response': 'trailers'
       }
       var url = "https://api.themoviedb.org/3/movie/"+movie_id+'?'+ $.param(params);
       $.getJSON(url,
@@ -102,6 +103,7 @@ function uw_MB(userid, htmlId) {
         })
         .done(function(data) {
           that.movie = data;
+          that.movie.uw_MB_trailer_link = "https://www.youtube.com/watch?v=" + that.movie.trailers.youtube[0].source;
           console.log(that.movie);
           that.updateViews("details")
         });
