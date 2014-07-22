@@ -94,7 +94,7 @@ function uw_MB(userid, htmlId) {
       var params = {
         'api_key': that.api_key
       }
-      var url = "https://api.themoviedb.org/3/movie/"+movie_id+'?'+ $.param(params);
+      var url = "https://api.themoviedb.org/3/movie/"+movie_id+'?'+ $.param(params) + "&append_to_response=trailers";
       $.getJSON(url,
         function() {})
         .fail(function() {
@@ -103,6 +103,7 @@ function uw_MB(userid, htmlId) {
         .done(function(data) {
           that.movie = data;
           console.log(that.movie);
+          console.log(that.movie.trailers.youtube[0].source);
           that.updateViews("details")
         });
     }
@@ -193,6 +194,11 @@ function uw_MB(userid, htmlId) {
           //get results again
           model.updateViews("results");
       });
+
+      // Set the trailer url
+      var trailerSource = model.movie.trailers.youtube[0].source;
+      var trailerUrl = "https://www.youtube.com/watch?v=" + trailerSource;
+      document.getElementById("uw_MB_trailer").href = trailerUrl;
     },
 
     updateView: function(msg) {
