@@ -103,7 +103,6 @@ function uw_MB(userid, htmlId) {
         .done(function(data) {
           that.movie = data;
           console.log(that.movie);
-          console.log(that.movie.trailers.youtube[0].source);
           that.updateViews("details")
         });
     }
