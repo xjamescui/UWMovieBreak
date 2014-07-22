@@ -92,9 +92,10 @@ function uw_MB(userid, htmlId) {
     loadMovieDetailData: function(movie_id) {
       var that = this;
       var params = {
-        'api_key': that.api_key
+        'api_key': that.api_key,
+        'append_to_response': 'trailers'
       }
-      var url = "https://api.themoviedb.org/3/movie/"+movie_id+'?'+ $.param(params) + "&append_to_response=trailers";
+      var url = "https://api.themoviedb.org/3/movie/"+movie_id+'?'+ $.param(params);
       $.getJSON(url,
         function() {})
         .fail(function() {
@@ -102,6 +103,7 @@ function uw_MB(userid, htmlId) {
         })
         .done(function(data) {
           that.movie = data;
+          that.movie.uw_MB_trailer_link = "https://www.youtube.com/watch?v=" + that.movie.trailers.youtube[0].source;
           console.log(that.movie);
           that.updateViews("details")
         });
@@ -193,11 +195,6 @@ function uw_MB(userid, htmlId) {
           //get results again
           model.updateViews("results");
       });
-
-      // Set the trailer url
-      var trailerSource = model.movie.trailers.youtube[0].source;
-      var trailerUrl = "https://www.youtube.com/watch?v=" + trailerSource;
-      document.getElementById("uw_MB_trailer").href = trailerUrl;
     },
 
     updateView: function(msg) {
@@ -205,7 +202,7 @@ function uw_MB(userid, htmlId) {
       if (msg === "error") {
         t = templates.error;
       } else if (msg === "details"){
-        t = Mustache.render(templates.details, model.movie);
+        t = Mustache.render(templates.details, model.movie, model.movie_trailer);
       }
       $("#uw_MB_details").html(t);
 

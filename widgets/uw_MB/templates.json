@@ -108,7 +108,7 @@
 						"</div>",
 						"<div class='row'>",
 							"<div class='uw_MB_contentDetail'>",
-								"<a href='' id='uw_MB_trailer' target='_blank'> View the trailer </a>",
+								"<a href={{uw_MB_trailer_link}} id='uw_MB_trailer' target='_blank'> View the trailer </a>",
 							"</div>",
 						"</div>",
 					"</div>",
