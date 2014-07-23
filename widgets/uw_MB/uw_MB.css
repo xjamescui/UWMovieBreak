@@ -77,6 +77,14 @@ div#break {
   font-size: 13px;
   font-style: italic; }
 
+.uw_MB_showtime_link {
+  font-family: "Lato";
+  font-size: 13px;
+  text-decoration: underline; }
+
+#uw_MB_theaterDirections {
+  float: right; }
+
 .uw_MB_movieResultBackground {
   background-color: #e8e8e8; }
 
@@ -84,6 +92,16 @@ div#break {
   text-align: right;
   font-family: "Lato";
   padding-top: 2px; }
+
+.uw_MB_searchInfo {
+  color: black;
+  padding-left: 10px;
+  padding-top: 8px;
+  float: right;
+  cursor: pointer; }
+
+.uw_MB_searchInfo:hover {
+  color: #3366ff; }
 
 .uw_MB_lato {
   font-family: "Lato"; }

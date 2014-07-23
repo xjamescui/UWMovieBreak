@@ -107,21 +107,26 @@ function uw_MB(userid, htmlId) {
           console.log(that.movie);
           that.updateViews("details")
         });
-    }
+    },
   };
 
   // View for search
   var searchView = {
-
     registerController: function(){
       $("#uw_MB_searchButton").click(function(){
         // Gather our variables
         var genre_id = $("#uw_MB_genre").val();
         var min_release_date = $("#uw_MB_releaseDate #datepicker").val();
         var min_score = 5;
+        var showtime_checkbox = document.getElementById("uw_MB_theaterOption");
 
-        //get results
-        model.loadMoviesData(genre_id, min_score, min_release_date);
+        // Display the showtime view if the option is selected
+        if(showtime_checkbox.checked){
+          model.updateViews("showtimes");
+        } else {
+          // Otherwise, get results
+          model.loadMoviesData(genre_id, min_score, min_release_date);
+        }
       });
 
       // Attach the datepicker
@@ -216,6 +221,33 @@ function uw_MB(userid, htmlId) {
     }
   };
 
+  var showtimesView = {
+    
+    registerController: function(){
+      $("#uw_MB_backToSearch").click(function(){
+          model.updateViews("search");
+      });
+    },
+
+    updateView: function(msg){
+      var t = "";
+      if (msg === "error") {
+        t = templates.error;
+      } else if (msg === "showtimes"){
+        t = Mustache.render(templates.showtimes);
+      }
+      $("#uw_MB_showtimes").html(t);
+
+      if (msg === "showtimes"){
+        showtimesView.registerController();
+      }
+    },
+
+    initView: function(){
+      model.addView(showtimesView.updateView);
+    }
+  }
+
   // Initialize our widget
   console.log("Initializing uw_MB(" + userid + ", " + htmlId + ")");
   portal.loadTemplates("widgets/uw_MB/templates.json",
@@ -226,6 +258,7 @@ function uw_MB(userid, htmlId) {
         searchView.initView();
         resultsView.initView();
         detailsView.initView();
+        showtimesView.initView();
 
         model.loadGenreData();
       });
