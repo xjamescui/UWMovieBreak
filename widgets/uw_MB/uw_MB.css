@@ -1,6 +1,23 @@
-div#break {
-  height: 3px;
-  background-color: black; }
+#uw_MB_background {
+  background-color: #fff4d0;
+  padding: 0px; }
+  #uw_MB_background button {
+    background: none;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: #fa4880; }
+  #uw_MB_background .fa-star {
+    color: gold; }
+
+.uw_MB_mainTitle {
+  background-color: #ffe28d;
+  border-bottom: 5px solid #ffc34b;
+  padding: 0px 5px; }
+
+#uw_MB_results, #uw_MB_details {
+  padding: 0 5px; }
 
 .uw_MB_noPadding {
   padding-left: 0;
@@ -83,7 +100,7 @@ div#break {
   text-decoration: underline; }
 
 .uw_MB_movieResultBackground {
-  background-color: #e8e8e8; }
+  background-color: #373737; }
 
 .uw_MB_backSearch {
   text-align: right;
@@ -113,5 +130,16 @@ div#break {
 .uw_MB_whiteText {
   color: white; }
 
-.uw_MB_redFill {
-  background-color: #d00000; }
+.uw_MB_tealFill {
+  background-color: #4cd9af;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px; }
+
+.uw_MB_taglineBox {
+  font-family: "Lato";
+  padding: 10px 5px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border-bottom: 5px solid gray; }

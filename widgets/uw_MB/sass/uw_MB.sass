@@ -4,10 +4,39 @@ $white: #ffffff
 $main-red: #D00000
 $blue-hover: #3366FF
 
-div#break
-  height: 3px
-  background-color: $black
+// Main Theme
+$header-yellow: #FFE28D
+$header-yellow-border: #FFC34B
+$main-yellow: #FFF4D0
+$main-teal: #4CD9AF
+$main-pink: #FA4880
 
+@mixin action-button($color)
+  background: none
+  border-radius: 5px
+  border: none
+  padding: 5px 10px
+  color: white
+  background-color: $color
+
+
+#uw_MB_background
+  background-color: $main-yellow
+  padding: 0px
+  button
+    @include action-button($main-pink)
+  .fa-star
+    color: gold
+
+.uw_MB_mainTitle
+  background-color: $header-yellow
+  border-bottom: 5px solid $header-yellow-border
+  padding: 0px 5px
+
+#uw_MB_results, #uw_MB_details
+  padding: 0 5px
+
+// Common
 .uw_MB_noPadding
   padding-left: 0
   padding-right: 0
@@ -89,7 +118,7 @@ div#break
   text-decoration: underline
 
 .uw_MB_movieResultBackground
-  background-color: #E8E8E8
+  background-color: #373737
 
 .uw_MB_backSearch
   text-align: right
@@ -119,5 +148,16 @@ div#break
 .uw_MB_whiteText
   color: $white
 
-.uw_MB_redFill
-  background-color: $main-red
+.uw_MB_tealFill
+  background-color: $main-teal
+  border-top-right-radius: 5px
+  border-bottom-right-radius: 5px
+
+.uw_MB_taglineBox
+  font-family: 'Lato'
+  padding: 10px 5px
+  background-color: white
+  color: black
+  border-radius: 10px
+  margin-bottom: 10px
+  border-bottom: 5px solid gray
