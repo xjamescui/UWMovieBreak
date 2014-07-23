@@ -120,13 +120,12 @@ function uw_MB(userid, htmlId) {
         var min_score = 5;
         var showtime_checkbox = document.getElementById("uw_MB_theaterOption");
 
-        // Display the showtime view if the option is selected
-        if(showtime_checkbox.checked){
-          model.updateViews("showtimes");
-        } else {
-          // Otherwise, get results
-          model.loadMoviesData(genre_id, min_score, min_release_date);
-        }
+        // Otherwise, get results
+        model.loadMoviesData(genre_id, min_score, min_release_date);
+      });
+
+      $("#uw_MB_theaterOption").click(function(){
+        model.updateViews("showtimes");
       });
 
       // Attach the datepicker
@@ -222,7 +221,7 @@ function uw_MB(userid, htmlId) {
   };
 
   var showtimesView = {
-    
+
     registerController: function(){
       $("#uw_MB_backToSearch").click(function(){
           model.updateViews("search");
