@@ -59,7 +59,7 @@ function uw_MB(userid, htmlId) {
       // params setup
       var params = {
         'api_key': that.api_key,
-        'vote_count.gte': 1000,
+        'vote_count.gte': 100,
         'vote_average.gte': min_score,
         'with_genres': genre_id,
         'language': 'en',
@@ -117,7 +117,7 @@ function uw_MB(userid, htmlId) {
         // Gather our variables
         var genre_id = $("#uw_MB_genre").val();
         var min_release_date = $("#uw_MB_releaseDate #datepicker").val();
-        var min_score = 5; // for quality suggestions, filter out any movies that have below 5/10 rating
+        var min_score = 5.0; // for quality suggestions, filter out any movies that have below 5/10 rating
 
         // Otherwise, get results
         model.loadMoviesData(genre_id, min_score, min_release_date);
