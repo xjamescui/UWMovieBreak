@@ -142,7 +142,7 @@
 	"showtimes": [
 		"<div class='container-fluid'>",
 			"<div class='row uw_MB_paddingTopBottom'>",
-				"<span class='uw_MB_viewTitle uw_MB_paddingLeft'>Galaxy Cinemas Waterloo</span>",
+				"<span class='uw_MB_viewTitle'>Galaxy Cinemas Waterloo</span>",
 			"</div>",
 			"<div class='row uw_MB_paddingLeft'>",
 				"<span class='uw_MB_contentDetail'>Address</span><br>",
