@@ -65,7 +65,8 @@
   color: black;
   font-family: "Lato";
   font-size: 19px;
-  text-shadow: 2px 2px 2px #aaaaaa; }
+  text-shadow: 2px 2px 2px #aaaaaa;
+  padding-left: 10px; }
 
 .uw_MB_labelTitle {
   font-family: "Lato";
@@ -120,9 +121,8 @@
 
 .uw_MB_clickable {
   cursor: pointer; }
-
-.uw_MB_clickable:hover {
-  color: #3366ff; }
+  .uw_MB_clickable:hover {
+    color: #3366ff; }
 
 .uw_MB_redText {
   color: #d00000; }
@@ -142,4 +142,5 @@
   color: black;
   border-radius: 10px;
   margin-bottom: 10px;
-  border-bottom: 5px solid gray; }
+  border-bottom: 5px solid gray;
+  text-align: center; }
