@@ -53,18 +53,18 @@ function uw_MB(userid, htmlId) {
        release_date:date,
        poster_path:string
     */
-    loadMoviesData: function(genre_id, min_score, release_date_min) {
+    loadMoviesData: function(genre_id, min_score, primary_release_year) {
       var that = this;
 
       // params setup
       var params = {
         'api_key': that.api_key,
-        'vote_count.gte': 1000,
+        'vote_count.gte': 100,
         'vote_average.gte': min_score,
         'with_genres': genre_id,
         'language': 'en',
         'sort_by': 'vote_average.desc',
-        'release_date.gte': release_date_min //YYYY-MM-DD
+        'primary_release_year': primary_release_year //YYYY
       }
       var url = "https://api.themoviedb.org/3/discover/movie?" + $.param(params);
       console.log('url: ' + url);
@@ -116,22 +116,16 @@ function uw_MB(userid, htmlId) {
       $("#uw_MB_searchButton").click(function(){
         // Gather our variables
         var genre_id = $("#uw_MB_genre").val();
-        var min_release_date = $("#uw_MB_releaseDate #datepicker").val();
+        var primary_release_year = $("#uw_MB_releaseDate #uw_MB_releaseYear").val();
         var min_score = 5; // for quality suggestions, filter out any movies that have below 5/10 rating
 
+        console.log("year:" + primary_release_year);
         // Otherwise, get results
-        model.loadMoviesData(genre_id, min_score, min_release_date);
+        model.loadMoviesData(genre_id, min_score, primary_release_year);
       });
 
       $("#uw_MB_theaterOption").click(function(){
         model.updateViews("showtimes");
-      });
-
-      // Attach the datepicker
-      $(function() {
-        $( "#uw_MB_search #datepicker" ).datepicker({
-          dateFormat: 'yy-mm-dd'
-        });
       });
     },
     // Update our view
