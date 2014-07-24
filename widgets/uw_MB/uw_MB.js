@@ -117,8 +117,7 @@ function uw_MB(userid, htmlId) {
         // Gather our variables
         var genre_id = $("#uw_MB_genre").val();
         var min_release_date = $("#uw_MB_releaseDate #datepicker").val();
-        var min_score = 5;
-        var showtime_checkbox = document.getElementById("uw_MB_theaterOption");
+        var min_score = 5; // for quality suggestions, filter out any movies that have below 5/10 rating
 
         // Otherwise, get results
         model.loadMoviesData(genre_id, min_score, min_release_date);
@@ -178,7 +177,12 @@ function uw_MB(userid, htmlId) {
       if (msg === "error") {
         t = templates.error;
       } else if (msg === "results"){
-        t = Mustache.render(templates.results, model);
+        if(model.movies.length > 0){
+          t = Mustache.render(templates.results, model);
+        }
+        else {
+          t = templates.no_results;
+        }
       }
       $("#uw_MB_results").html(t);
 

@@ -28,10 +28,10 @@
 							"</select>",
 						"</div>",
 						"<div class='row uw_MB_tealFill uw_MB_whiteText uw_MB_labelTitle'>",
-							"<span class='uw_MB_paddingLeft'>Release Date</span>",
+							"<span class='uw_MB_paddingLeft'>Release Date (>=)</span>",
 						"</div>",
 						"<div id='uw_MB_releaseDate' class='row uw_MB_paddingTopBottom uw_MB_paddingLeft uw_MB_lato'>",
-							"<input type='text' id='datepicker' placeholder='Click to select'>",
+							"<input type='text' id='datepicker' placeholder='YYYY-MM-DD'>",
 						"</div>",
 						"<div class='row uw_MB_tealFill uw_MB_whiteText uw_MB_labelTitle'>",
 							"<span class='uw_MB_paddingLeft'>At the cinema</span>",
@@ -55,7 +55,7 @@
 		"<div class='container-fluid'>",
 			"<div class='row uw_MB_paddingTopBottom'>",
 				"<div class='col-xs-4 col-md-4 uw_MB_noPadding'>",
-					"<span class='uw_MB_viewTitle'>Results</span>",
+					"<span class='uw_MB_viewTitle'>Suggestions</span>",
 				"</div>",
 				"<div class='col-xs-8 col-md-8 uw_MB_noPadding uw_MB_backSearch'>",
 					"<button id='uw_MB_backToSearch'>Back to search</button>",
@@ -85,6 +85,16 @@
 				"</div>",
 			"{{/movies}}",
 		"</div>"
+	],
+
+	"error": [
+		"<p> An error has occurred </p>",
+		"<button id='uw_MB_backToSearch'>Back to search</button>"
+	],
+
+	"no_results": [
+		"<p> No movies found </p>",
+		"<button id='uw_MB_backToSearch'>Back to search</button>"
 	],
 
 	"details": [
