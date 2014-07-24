@@ -119,9 +119,12 @@ function uw_MB(userid, htmlId) {
         var primary_release_year = $("#uw_MB_releaseDate #uw_MB_releaseYear").val();
         var min_score = 5; // for quality suggestions, filter out any movies that have below 5/10 rating
 
-        console.log("year:" + primary_release_year);
-        // Otherwise, get results
-        model.loadMoviesData(genre_id, min_score, primary_release_year);
+        if(Number(primary_release_year) != primary_release_year){
+          alert("Please enter a valid year.");
+        } else {
+          // Otherwise, get results
+          model.loadMoviesData(genre_id, min_score, primary_release_year);
+        };
       });
 
       $("#uw_MB_theaterOption").click(function(){

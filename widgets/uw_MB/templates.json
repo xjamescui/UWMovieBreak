@@ -31,7 +31,7 @@
 							"<span class='uw_MB_paddingLeft'>Release Year</span>",
 						"</div>",
 						"<div id='uw_MB_releaseDate' class='row uw_MB_paddingTopBottom uw_MB_paddingLeft uw_MB_lato'>",
-							"<input type='text' maxlength='4' id='uw_MB_releaseYear' placeholder='YYYY' required/>",
+							"<input type='text' maxlength='4' id='uw_MB_releaseYear' placeholder='YYYY' value='2014'/>",
 						"</div>",
 						"<div class='row uw_MB_tealFill uw_MB_whiteText uw_MB_labelTitle'>",
 							"<span class='uw_MB_paddingLeft'>At the cinema</span>",
