@@ -120,9 +120,8 @@
 
 .uw_MB_clickable {
   cursor: pointer; }
-
-.uw_MB_clickable:hover {
-  color: #3366ff; }
+  .uw_MB_clickable:hover {
+    color: #3366ff; }
 
 .uw_MB_redText {
   color: #d00000; }
