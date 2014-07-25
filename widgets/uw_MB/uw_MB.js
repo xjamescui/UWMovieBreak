@@ -33,7 +33,7 @@ function uw_MB(userid, htmlId) {
      */
     loadGenreData: function() {
       var that = this;
-      $.getJSON("http://private-af6af-themoviedb.apiary-proxy.com/3/genre/movie/list?api_key=" + that.api_key,
+      $.getJSON("https://api.themoviedb.org/3/genre/movie/list?api_key=" + that.api_key,
         function() {})
         .fail(function() {
           console.log("error trying to get genres");
