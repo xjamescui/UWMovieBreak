@@ -99,6 +99,8 @@
   text-shadow: 2px 2px 2px #aaaaaa;
   font-size: 13px;
   text-align: left; }
+  .uw_MB_content_title a {
+    color: white; }
 
 .uw_MB_contentDetail {
   font-family: "Lato";

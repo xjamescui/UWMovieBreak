@@ -86,6 +86,7 @@ function uw_MB(userid, htmlId) {
        vote_average: number
        vote_count: int
        original_title: string
+       imdb_id: string
 
      */
     loadMovieDetailData: function(movie_id) {

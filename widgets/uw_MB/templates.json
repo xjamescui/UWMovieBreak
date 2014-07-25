@@ -110,7 +110,7 @@
 				"<div class='col-xs-5 col-md-5 uw_MB_detailPadding'>",
 					"<div class='container-fluid'>",
 						"<div class='row uw_MB_marginBottom'>",
-							"<div class='uw_MB_content_title'>{{original_title}}</div>",
+							"<div class='uw_MB_content_title'><a href='http://www.imdb.com/title/{{imdb_id}}' target='_blank'>{{original_title}}</a></div>",
 						"</div>",
 						"<div class='row uw_MB_marginBottom'>",
 							"<div><i class='fa fa-star fa-lg'></i> {{vote_average}}/10</div>",
