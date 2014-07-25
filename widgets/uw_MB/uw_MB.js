@@ -67,7 +67,6 @@ function uw_MB(userid, htmlId) {
         'primary_release_year': primary_release_year //YYYY
       }
       var url = "https://api.themoviedb.org/3/discover/movie?" + $.param(params);
-      console.log('url: ' + url);
 
       $.getJSON(url, function() {})
         .fail(function() {
@@ -104,7 +103,6 @@ function uw_MB(userid, htmlId) {
         .done(function(data) {
           that.movie = data;
           that.movie.uw_MB_trailer_link = "https://www.youtube.com/watch?v=" + that.movie.trailers.youtube[0].source;
-          console.log(that.movie);
           that.updateViews("details")
         });
     },
@@ -148,7 +146,6 @@ function uw_MB(userid, htmlId) {
     },
 
     initView: function() {
-      console.log("Initializing uw_MB: searchView");
       model.addView(searchView.updateView);
     }
   };
@@ -158,7 +155,6 @@ function uw_MB(userid, htmlId) {
     registerController: function(){
       $(".uw_MB_result_item").each(function(){
           $(this).click(function(){
-          console.log("item clicked: value is "+ $(this).data('value'));
           var movie_id = $(this).data('value');
           model.loadMovieDetailData(movie_id);
         });
@@ -189,7 +185,6 @@ function uw_MB(userid, htmlId) {
     },
 
     initView: function(){
-      console.log("Initialziating uw_MB: resultsView");
       model.addView(resultsView.updateView);
     }
   };
@@ -249,7 +244,6 @@ function uw_MB(userid, htmlId) {
   }
 
   // Initialize our widget
-  console.log("Initializing uw_MB(" + userid + ", " + htmlId + ")");
   portal.loadTemplates("widgets/uw_MB/templates.json",
       function (t) {
         templates = t;
