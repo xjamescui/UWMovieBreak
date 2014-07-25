@@ -1,5 +1,5 @@
 #uw_MB_background {
-  background-color: #fff4d0;
+  background-color: white;
   padding: 0px; }
   #uw_MB_background button {
     background: none;
@@ -7,7 +7,7 @@
     border: none;
     padding: 5px 10px;
     color: white;
-    background-color: #fa4880; }
+    background-color: #a0a0a0; }
   #uw_MB_background .fa-star {
     color: gold; }
 
@@ -18,6 +18,16 @@
 
 #uw_MB_results, #uw_MB_details {
   padding: 0 5px; }
+
+.uw_MB_Icon {
+  float: left;
+  padding-top: 5px;
+  padding-left: 5px; }
+
+#uw_MB_header {
+  font-size: 26px;
+  padding-left: 50px;
+  padding-top: 6px; }
 
 .uw_MB_noPadding {
   padding-left: 0;
@@ -101,7 +111,9 @@
   text-decoration: underline; }
 
 .uw_MB_movieResultBackground {
-  background-color: #373737; }
+  background-color: #373737;
+  border-radius: 5px;
+  border: solid #e22d00; }
 
 .uw_MB_backSearch {
   text-align: right;
@@ -125,13 +137,13 @@
     color: #3366ff; }
 
 .uw_MB_redText {
-  color: #d00000; }
+  color: #e22d00; }
 
 .uw_MB_whiteText {
   color: white; }
 
-.uw_MB_tealFill {
-  background-color: #4cd9af;
+.uw_MB_filterBar {
+  background-color: #e22d00;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px; }
 
